@@ -11,6 +11,10 @@ class ComposerStaticInitff7d7d9ee5c75a68a6aa5979034949bd
         array (
             'Push\\Push\\' => 10,
         ),
+        'F' => 
+        array (
+            'Firebase\\JWT\\' => 13,
+        ),
         'C' => 
         array (
             'Core\\' => 5,
@@ -25,6 +29,10 @@ class ComposerStaticInitff7d7d9ee5c75a68a6aa5979034949bd
         'Push\\Push\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
+        ),
+        'Firebase\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
         ),
         'Core\\' => 
         array (
