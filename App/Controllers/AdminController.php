@@ -17,16 +17,6 @@ class AdminController extends Controller
         $this->admin_model = new Admin();
     }
 
-    // Guarda Admin No Banco De Dados
-    private function store($novo_admin)
-    {
-        $novo_admin['senha'] = password_hash($novo_admin['senha'], PASSWORD_BCRYPT);
-
-        $this->admin_model->save($novo_admin);
-
-        return $this->response(201, ['success' => 'Novo administrador criado']);
-    }
-
     // Cadastra Novo Admin
     public function cadastrar($data)
     {
@@ -43,6 +33,16 @@ class AdminController extends Controller
         }
 
         return $this->store($data);
+    }
+
+    // Guarda Admin No Banco De Dados
+    private function store($novo_admin)
+    {
+        $novo_admin['senha'] = password_hash($novo_admin['senha'], PASSWORD_BCRYPT);
+
+        $this->admin_model->save($novo_admin);
+
+        return $this->response(201, ['success' => 'Novo administrador criado']);
     }
 
     // Verifica Permissões

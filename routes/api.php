@@ -8,6 +8,8 @@ use Core\Response;
 Router::get('/cadastro', 'AdminController::cadastro');
 Router::get('/login', 'AdminController::login');
 
+Router::get('/cliente', 'ClienteController::index');
+Router::get('/cliente/{id}', 'ClienteController::show');
 Router::post('/cliente', 'ClienteController::store');
 
 Router::get('/pets', 'PetController::index');
