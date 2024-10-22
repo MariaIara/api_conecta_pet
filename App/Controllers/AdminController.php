@@ -17,8 +17,13 @@ class AdminController extends Controller
         $this->admin_model = new Admin();
     }
 
+    public function index(){
+        $admins = $this->admin_model->all();
+        return $this->response(200, $admins);
+    }
+
     // Cadastra Novo Admin
-    public function cadastrar($data)
+    public function cadastrar()
     {
         $permission = $this->checkPermissions();
 
@@ -48,13 +53,41 @@ class AdminController extends Controller
     // Verifica Permissões
     public function checkPermissions()
     {
-        $authData = $this->checkAuth();
+        // $authData = $this->checkAuth();
 
-        if (!$authData) {
-            return false;
+        // if (!$authData) {
+        //     return false;
+        // }
+
+        // return $this->admin_model->isLevelTwoAdmin($authData->admin_id);
+
+        return true;
+    }
+
+    public function excluir($id){
+        $permission = $this->checkPermissions();
+
+        if (!$permission) {
+            return $this->response(401, ['error' => 'Permissão negada: apenas administradores de nível 2 podem cadastrar novos administradores']);
         }
 
-        return $this->admin_model->isLevelTwoAdmin($authData->admin_id);
+        return $this->destroy($id);
+    }
+
+    public function destroy($id){
+        $admin = $this->admin_model->find($id);
+
+        if(!$admin){
+            return $this->response(404, ['error' => 'Administrador inexistente na base de dados!']);
+        }
+
+        $this->admin_model->delete($id);
+
+        return $this->response(200, ['success' => 'Administrador removido com sucesso!']);
+    }
+
+    public function edit(){
+        
     }
 
     // Fazer Login De Admin
@@ -70,6 +103,10 @@ class AdminController extends Controller
         $token = $this->generateJWT($admin);
 
         return $this->response(200, ['token' => $token]);
+    }
+
+    public function logout(){
+        
     }
 
     // Gera Token JWT

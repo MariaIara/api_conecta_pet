@@ -37,4 +37,21 @@ class ClienteController extends Controller
         // $cliente_model->save($cliente);
         // return $this->response(200, ['success' => 'Cliente criado com sucesso!']);
     }
+
+    public function update($id){
+        $this->cliente_model->update($id, $this->getRequestBody());
+        return $this->response(200, ['success' => 'Alteração realizada com sucesso!']);
+    }
+
+    public function destroy($id){
+        $cliente = $this->cliente_model->find($id);
+
+        if(!$cliente){
+            return $this->response(404, ['error' => 'Este cliente não está cadastrado em nossa base de dados']);
+        }
+
+        $this->cliente_model->delete($id);
+        return $this->response(200, ['success' => 'Cliente excluído com sucesso!']);
+    }
 }
+

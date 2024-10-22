@@ -13,13 +13,14 @@ class PetController extends Controller
         $this->pet_model = new Pet();
     }
 
-    public function index()
+    public function index() //Retorna todos os registros de pets
     {
         $pets = $this->pet_model->all();
         return $this->response(200, $pets);
     }
 
-    public function show($id){
+    public function show($id) //Retorna um registro de pet específico por id
+    {  
         $pet = $this->pet_model->find($id);
 
         if(!$pet){
