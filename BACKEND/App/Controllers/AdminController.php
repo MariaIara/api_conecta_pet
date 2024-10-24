@@ -50,20 +50,6 @@ class AdminController extends Controller
         return $this->response(201, ['success' => 'Novo administrador criado']);
     }
 
-    // Verifica Permissões
-    public function checkPermissions()
-    {
-        // $authData = $this->checkAuth();
-
-        // if (!$authData) {
-        //     return false;
-        // }
-
-        // return $this->admin_model->isLevelTwoAdmin($authData->admin_id);
-
-        return true;
-    }
-
     public function excluir($id){
         $permission = $this->checkPermissions();
 
@@ -86,8 +72,29 @@ class AdminController extends Controller
         return $this->response(200, ['success' => 'Administrador removido com sucesso!']);
     }
 
-    public function edit(){
+    public function update($id){
+        $this->admin_model->update($id, $this->getRequestBody());
+        $permission = $this->checkPermissions();
+
+        if(!$permission){
+            return $this->response(404, ['error' => 'Permissão negada: apenas administradores de nível 2 podem cadastrar novos administradores']);
+        }
         
+        return $this->response(200, ['success' => 'Alteração admnistrativa realizada com sucesso!']);
+    }
+
+        // Verifica Permissões
+    public function checkPermissions()
+    {
+        // $authData = $this->checkAuth();
+
+        // if (!$authData) {
+        //     return false;
+        // }
+
+        // return $this->admin_model->isLevelTwoAdmin($authData->admin_id);
+
+        return true;
     }
 
     // Fazer Login De Admin

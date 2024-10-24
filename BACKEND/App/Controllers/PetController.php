@@ -40,7 +40,7 @@ class PetController extends Controller
         return $this->response(200, ['sucess' => 'Alteração realizada com sucesso!']);
     }
 
-    public function destroy($id){
+    public function delete($id){
         $pet = $this->pet_model->find($id);
 
         if(!$pet){

@@ -43,7 +43,7 @@ class ClienteController extends Controller
         return $this->response(200, ['success' => 'Alteração realizada com sucesso!']);
     }
 
-    public function destroy($id){
+    public function delete($id){
         $cliente = $this->cliente_model->find($id);
 
         if(!$cliente){
