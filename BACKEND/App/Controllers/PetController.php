@@ -19,13 +19,13 @@ class PetController extends Controller
 
     public function index() //Retorna todos os registros de pets
     {
-        $pets = $this->pet_model->all();
+        $pets = $this->pet_model->allPets();
         return $this->response(200, $pets);
     }
 
     public function show($id) //Retorna um registro de pet específico por id
     {
-        $pet = $this->pet_model->find($id);
+        $pet = $this->pet_model->petByID($id);
 
         if (!$pet) {
             $this->response(404, ['Message' => 'Pet não encontrado']);
@@ -44,7 +44,7 @@ class PetController extends Controller
         //  cliente_cpf => '00000000000'
         // ]
 
-        $cliente_existe = $this->cliente_model->findBy('cpf', $pet['key_cliente_cpf']); // findBy (função do framework que procura um registro no banco na tabela da model selecionada (cliente) onde a coluna do primeiro parâmetro que tenha o valor do segundo parâmetro) 
+        $cliente_existe = $this->cliente_model->findBy('cpf', $pet['cliente_cpf']); // findBy (função do framework que procura um registro no banco na tabela da model selecionada (cliente) onde a coluna do primeiro parâmetro que tenha o valor do segundo parâmetro) 
 
         if (!$cliente_existe) { // Caso o cliente com o CPF informado não exista:
             return $this->response(404, ['error' => 'Não foi possível encontrar um cliente com o CPF informado']);
