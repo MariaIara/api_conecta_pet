@@ -10,7 +10,7 @@ use \Firebase\JWT\Key;
 class AdminController extends Controller
 {
     protected $admin_model;
-    private $secret_key = 'sua_chave_secreta';
+    private $secret_key = 'teste';
 
     public function __construct()
     {
@@ -114,23 +114,19 @@ class AdminController extends Controller
         return $this->response(200, ['token' => $token]);
     }
 
-    public function logout(){
-        
-    }
-
     // Gera Token JWT
     private function generateJWT($admin)
     {
         $payload = [
-            'iss' => "seu-dominio.com", // Emissor do token
-            'aud' => "seu-dominio.com", // Público do token
+            'iss' => "conecta_pet", // Emissor do token
+            'aud' => "conecta_pet", // Público do token
             'iat' => time(), // Tempo em que o token foi emitido
             'nbf' => time(), // Tempo antes do qual o token não é válido
             'exp' => time() + (60 * 60), // Tempo de expiração do token (1 hora)
             'data' => [
                 'admin_id' => $admin['id'],
                 'email' => $admin['email'],
-                'nivel' => $admin['nivel']
+                'nivel' => $admin['tipo']
             ]
         ];
 

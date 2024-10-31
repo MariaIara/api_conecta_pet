@@ -15,7 +15,7 @@ Router::get('/cliente', 'ClienteController::index');
 Router::get('/cliente/{id}', 'ClienteController::show');
 Router::post('/cliente', 'ClienteController::store');
 Router::put('/cliente/{id}', 'ClienteController::update');
-Router::delete('/cliente/{id}', 'ClienteController::delete');
+Router::delete('/cliente/{id}', 'ClienteController::destroy');
 
 Router::get('/pets', 'PetController::index');
 Router::get('/pets/{id}', 'PetController::show');

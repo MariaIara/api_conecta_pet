@@ -16,6 +16,6 @@ class Admin extends Model
 
     public function verifyPassword($input_password, $stored_password)
     {
-        return password_verify($input_password, $stored_password);
+        return $input_password == $stored_password;
     }
 }
