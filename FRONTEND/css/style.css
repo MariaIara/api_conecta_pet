@@ -22,7 +22,6 @@ header {
     display: flex;
     gap: 1rem;
     align-items: center;
-    /* justify-content: center; */
 }
 
 .logo h1 {
@@ -43,7 +42,6 @@ header {
 .nav-list {
     display: flex;
     align-items: center;
-
 }
 
 .nav-list ul {
@@ -129,6 +127,21 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    animation: float 2.5s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
 }
 
 /*section about us*/
