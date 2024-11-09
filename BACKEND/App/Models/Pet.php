@@ -23,7 +23,7 @@ class Pet extends Model
         return $this->query($sql);
     }
 
-    public function petByID($id)
+    public function petByMicrochip($microchip)
     {
         $sql = "SELECT 
                     pet.*, 
@@ -34,8 +34,8 @@ class Pet extends Model
                 INNER JOIN cliente ON cliente.cpf = pet.cliente_cpf 
                 INNER JOIN endereco ON endereco.cliente_cpf = cliente.cpf 
                 INNER JOIN telefone ON telefone.cliente_cpf = cliente.cpf
-                WHERE pet.id = :id";
+                WHERE pet.microchip = :microchip";
 
-        return $this->query($sql, ['id' => $id]);
+        return $this->query($sql, ['microchip' => $microchip]);
     }
 }

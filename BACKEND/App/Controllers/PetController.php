@@ -25,7 +25,7 @@ class PetController extends Controller
 
     public function show($id) //Retorna um registro de pet específico por id
     {
-        $pet = $this->pet_model->petByID($id);
+        $pet = $this->pet_model->petByMicrochip($id);
 
         if (!$pet) {
             $this->response(404, ['Message' => 'Pet não encontrado']);
