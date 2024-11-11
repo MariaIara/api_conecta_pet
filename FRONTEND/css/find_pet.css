@@ -19,6 +19,7 @@ body {
 }
 
 .input-container {
+    margin-bottom: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -50,6 +51,7 @@ body {
     margin-top: 1rem;
     text-align: center;
 }
+
 
 @media (max-width:300px) {
     .box-find h3 {
