@@ -1,0 +1,43 @@
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background);
+}
+
+.container.box-feedback {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 3rem 2rem;
+    width: 35rem;
+    border-radius: 0.8rem;
+    background-color: var(--gray-300);
+}
+
+a {
+    text-align: center;
+}
+
+.title-not-find {
+    font-size: 2.6rem;
+    color: var(--gray-500);
+}
+
+@media (max-width: 390px) {
+    .container.box-feedback {
+        padding: 3rem 1.7rem;
+        width: 29rem;
+    }
+
+    .box-feedback a {
+        width: 22rem;
+    }
+
+    .title-not-find {
+        font-size: 2.2rem;
+
+    }
+}
