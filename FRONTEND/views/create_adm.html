@@ -7,7 +7,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sora:wght@100..800&display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sora:wght@100..800&display=swap"
+        rel="stylesheet" />
     <link rel="stylesheet" href="../css/create_adm.css" />
     <link rel="stylesheet" href="../css/reset.css" />
     <title>Criar administrador - ONG PetSocial Patinhas de Rua</title>
@@ -18,28 +20,34 @@
         <h1>Criar administrador</h1>
         <p>Preencha os campos para criar um novo usuário</p>
 
-        <form action="#">
+        <form id="adminForm">
             <div class="input-group">
-                <i class="ph ph-user-circle"></i>
-                <input type="text" placeholder="Digite o nome de usuário" id="" required>
+                <i class="ph ph-envelope"></i>
+                <input type="email" placeholder="Digite o e-mail" id="email" required>
             </div>
 
             <div class="input-group">
                 <i class="ph ph-lock"></i>
-                <input type="email" placeholder="Digite o e-mail" id="" required>
+                <input type="password" placeholder="Digite a senha" id="senha" required>
             </div>
 
-            <div class="input-group">
-                <i class="ph ph-envelope"></i>
-                <input type="password" placeholder="Digite a senha" id="" required>
+            <label>Tipo de administrador:</label>
+            <div>
+                <input type="radio" id="adminComum" name="adminType" value="1" required>
+                <label for="adminComum">Comum</label>
+            </div>
+            <div>
+                <input type="radio" id="adminMaster" name="adminType" value="2" required>
+                <label for="adminMaster">Master</label>
             </div>
 
             <button type="submit" class="btn-primary">Criar</button>
         </form>
+
+
     </div>
 
-    <script src="../js/app.js"></script>
-    <!-- <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script> -->
+    <script src="../js/create_adm.js"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </body>
 
