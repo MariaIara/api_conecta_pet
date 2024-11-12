@@ -5,7 +5,10 @@ document.getElementById('petForm').addEventListener('submit', async (event) => {
     nome: document.getElementById('nome').value,
     raca: document.getElementById('raca').value,
     sexo: document.querySelector('input[name="sexo"]:checked').value,
-    animal: document.querySelector('input[name="tipo"]:checked').value === 'Gato' ? 1 : 0,
+    animal:
+      document.querySelector('input[name="tipo"]:checked').value === 'Gato'
+        ? 1
+        : 0,
     microchip: document.getElementById('microchip').value,
     cliente_cpf: document.getElementById('cpf').value,
   }
@@ -33,3 +36,13 @@ document.getElementById('petForm').addEventListener('submit', async (event) => {
     alert('Erro ao registrar pet.')
   }
 })
+
+//formatador cpf e cep
+function formatCPF(cpfField) {
+  let cpf = cpfField.value.replace(/\D/g, '')
+  cpf = cpf.slice(0, 11)
+  cpfField.value = cpf
+    .replace(/(\d{3})(\d)/, '$1.$2')
+    .replace(/(\d{3})(\d)/, '$1.$2')
+    .replace(/(\d{3})(\d{1,2})$/, '$1-$2')
+}
