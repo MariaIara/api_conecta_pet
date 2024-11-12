@@ -145,7 +145,6 @@ header {
 }
 
 /*section about us*/
-
 .about-us.container {
     display: flex;
     justify-content: space-between;
@@ -214,7 +213,6 @@ header {
 }
 
 /*section report*/
-
 .s-report.container {
     padding: 0 3rem 2rem 3rem;
 }
@@ -314,12 +312,49 @@ header {
     transform: scale(1.1);
 }
 
-/*section projects*/
+/*sectio project*/
+.s-project.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    padding: 4rem;
+}
 
+.s-project>h1 {
+    color: var(--gray-500);
+    font-size: 4.3rem;
+}
 
+.card {
+    background-color: var(--purple-300);
+    border-radius: 0.8rem;
+    margin-top: 3rem;
+    height: 500px;
+    width: 900px;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+}
+
+.image img {
+    width: 400px;
+    height: 400px;
+}
+
+.card .text {
+    width: 400px;
+}
+
+.card .text h2 {
+    font-size: 3.2rem;
+    margin-bottom: 2rem;
+}
 
 /*section volunteer*/
-
 .s-volunteer {
     background: url('../assets/dog-background.png') no-repeat center center/cover;
     display: flex;
@@ -387,7 +422,6 @@ textarea::placeholder {
 }
 
 /*footer*/
-
 footer {
     padding: 4.8rem 2rem;
     width: 100%;
@@ -466,52 +500,6 @@ footer .copy {
 
 footer .copy strong {
     font-size: 1.5rem;
-}
-
-
-.s-project.container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 100vh;
-    padding: 4rem;
-}
-
-.s-project>h1 {
-    color: var(--gray-500);
-    font-size: 4.3rem;
-}
-
-.card {
-    background-color: var(--purple-300);
-    border-radius: 0.8rem;
-    margin-top: 3rem;
-    height: 500px;
-    width: 900px;
-    color: var(--white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4rem;
-}
-
-.image img {
-    width: 400px;
-    height: 400px;
-}
-
-.card .text {
-    width: 400px;
-}
-
-.card .text h2 {
-    font-size: 3.2rem;
-    margin-bottom: 2rem;
-}
-
-.card text p {
-    line-height: 1.5;
 }
 
 /*responsivo*/
