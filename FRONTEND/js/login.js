@@ -38,6 +38,12 @@ async function login() {
   }
 }
 
+//função para mostrar senha
+function togglePassword() {
+  const passwordField = document.getElementById('password')
+  passwordField.type = passwordField.type === 'password' ? 'text' : 'password'
+}
+
 // chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 //   someAsyncFunction()
 //     .then((result) => {
