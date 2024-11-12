@@ -3,7 +3,6 @@ document
   .addEventListener('submit', async function (event) {
     event.preventDefault()
 
-    // Coletando os dados do formulário
     const data = {
       nome: document.getElementById('nomeTutor').value,
       cpf: document.getElementById('cpfTutor').value,
@@ -17,7 +16,6 @@ document
     }
 
     try {
-      // Enviando a requisição para o backend
       const response = await fetch('http://localhost:8080/cliente', {
         method: 'POST',
         headers: {
@@ -28,15 +26,15 @@ document
 
       const result = await response.json()
 
-      // Exibindo um alerta com a resposta do servidor
       if (response.ok) {
         alert(result.success)
+        window.location.href = 'administrative_panel.html'
       } else {
         alert(result.error || 'Erro ao registrar o tutor.')
       }
     } catch (error) {
       console.error('Erro na requisição:', error)
-      alert('Erro na conexão com o servidor.')
+      alert('Erro na conexão com o servidor')
     }
   })
 
