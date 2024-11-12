@@ -52,6 +52,11 @@ body > div {
     overflow-x: auto;
 }
 
+#table-container {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
 .table-wrapper h2 {
     font-size: 1.9rem;
     color: var(--blue-900);
