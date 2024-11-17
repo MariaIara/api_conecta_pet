@@ -1,4 +1,4 @@
-async function fetchData() {
+async function buscarPets() {
   try {
     const response = await fetch('http://localhost:8080/pets')
     if (!response.ok) {
@@ -21,14 +21,18 @@ async function fetchData() {
       pet.sexo,
       pet.microchip,
       pet.raca,
-      pet.animal === 0 ? 'Gato' : 'Cachorro',
-      pet.cliente_cpf,
+      pet.animal,
+      formatCPF(pet.cliente_cpf),
     ])
 
     createTable(headers, rows)
   } catch (error) {
     console.error('Erro ao buscar dados:', error)
   }
+}
+
+function formatCPF(cpf) {
+  return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4')
 }
 
 function createTable(headers, rows) {
@@ -54,11 +58,16 @@ function createTable(headers, rows) {
       td.textContent = cellData
       row.appendChild(td)
     })
+
     const actionTd = document.createElement('td')
     actionTd.innerHTML = `
-                    <button class="action-btn delete-btn"><i class="ph-fill ph-trash"></i></button>
-                    <button class="action-btn edit-btn"><i class="ph-fill ph-pencil-simple"></i></button>
-                `
+      <button class="action-btn delete-btn" data-microchip="${rowData[2]}">
+        <i class="ph-fill ph-trash"></i>
+      </button>
+      <button class="action-btn edit-btn">
+        <i class="ph-fill ph-pencil-simple"></i>
+      </button>
+    `
     row.appendChild(actionTd)
     tbody.appendChild(row)
   })
@@ -66,6 +75,22 @@ function createTable(headers, rows) {
   table.appendChild(thead)
   table.appendChild(tbody)
   tableContainer.appendChild(table)
+
+
+  document.querySelectorAll('.delete-btn').forEach((button) => {
+    button.addEventListener('click', () => {
+      alert('Em breve')
+    })
+  })
 }
 
-document.addEventListener('DOMContentLoaded', fetchData)
+document.addEventListener('DOMContentLoaded', buscarPets)
+
+document.getElementById('search-icon').addEventListener('click', function () {
+  const searchInput = document.getElementById('search-input')
+  const isVisible = searchInput.style.display === 'block'
+  searchInput.style.display = isVisible ? 'none' : 'block'
+  if (searchInput.style.display === 'block') {
+    searchInput.focus()
+  }
+})
