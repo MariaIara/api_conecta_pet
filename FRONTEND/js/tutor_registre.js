@@ -5,8 +5,8 @@ document
 
     const data = {
       nome: document.getElementById('nomeTutor').value,
-      cpf: document.getElementById('cpfTutor').value,
-      cep: document.getElementById('cepTutor').value,
+      cpf: document.getElementById('cpfTutor').value.replace(/\D/g, ''), // Remove formatação do CPF
+      cep: document.getElementById('cepTutor').value.replace(/\D/g, ''), // Remove formatação do CEP
       cidade: document.getElementById('cidadeTutor').value,
       UF: document.getElementById('UFTutor').value,
       bairro: document.getElementById('bairroTutor').value,
@@ -24,7 +24,9 @@ document
         body: JSON.stringify(data),
       })
 
+      console.log('Resposta do servidor:', response)
       const result = await response.json()
+      console.log('Resultado:', result)
 
       if (response.ok) {
         alert(result.success)
@@ -38,7 +40,6 @@ document
     }
   })
 
-//formatador cpf e cep
 function formatCPF(cpfField) {
   let cpf = cpfField.value.replace(/\D/g, '')
   cpf = cpf.slice(0, 11)
