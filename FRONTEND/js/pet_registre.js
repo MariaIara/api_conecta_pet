@@ -5,15 +5,12 @@ document.getElementById('petForm').addEventListener('submit', async (event) => {
     nome: document.getElementById('nome').value,
     raca: document.getElementById('raca').value,
     sexo: document.querySelector('input[name="sexo"]:checked').value,
-    animal:
-      document.querySelector('input[name="tipo"]:checked').value === 'Gato'
-        ? 1
-        : 0,
+    animal: document.querySelector('input[name="tipo"]:checked').value,
     microchip: document.getElementById('microchip').value,
-    cliente_cpf: document.getElementById('cpf').value,
+    cliente_cpf: document.getElementById('cpf').value.replace(/\D/g, ''),
   }
 
-  console.log('Dados do pet:', petData) // Verifica os dados antes do envio
+  console.log('Dados do pet:', petData)
 
   try {
     const response = await fetch('http://localhost:8080/pets', {
@@ -26,7 +23,7 @@ document.getElementById('petForm').addEventListener('submit', async (event) => {
 
     if (response.ok) {
       alert('Pet registrado com sucesso!')
-      window.location.href = 'administrative_panel.html' // Redireciona para o painel administrativo
+      window.location.href = 'administrative_panel.html'
     } else {
       console.error('Erro do backend:', data.error)
       alert(`Erro ao registrar pet: ${data.error}`)
@@ -37,9 +34,8 @@ document.getElementById('petForm').addEventListener('submit', async (event) => {
   }
 })
 
-//formatador cpf e cep
 function formatCPF(cpfField) {
-  let cpf = cpfField.value.replace(/\D/g, '')
+  let cpf = cpfField.value.replace(/\D/g, '') 
   cpf = cpf.slice(0, 11)
   cpfField.value = cpf
     .replace(/(\d{3})(\d)/, '$1.$2')
