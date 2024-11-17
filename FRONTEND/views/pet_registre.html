@@ -45,7 +45,7 @@
             <input type="text" id="microchip" placeholder="Digite o microchip">
 
             <label for="cpf">CPF do responsável</label>
-            <input type="text" id="cpf" placeholder="Digite o CPF do responsável" required>
+            <input type="text" id="cpf" placeholder="Digite o CPF do responsável" oninput="formatCPF(this)" required>
 
             <button type="submit" class="btn-primary">Adicionar</button>
         </form>
