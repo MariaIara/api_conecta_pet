@@ -114,6 +114,16 @@ class AdminController extends Controller
         return $this->response(200, ['token' => $token]);
     }
 
+    public function recuperarSenha(){
+        $body = $this->getRequestBody();
+
+        if(!$body){
+            return $this->response(401, ['error' => 'O e-mail não está cadastrado!']);
+        }
+        
+        // Terminamos em breve :)
+    }
+
     // Gera Token JWT
     private function generateJWT($admin)
     {

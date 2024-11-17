@@ -23,7 +23,7 @@ class PetController extends Controller
         return $this->response(200, $pets);
     }
 
-    public function show($id) //Retorna um registro de pet específico por id
+    public function show($id) //Retorna um registro de pet específico por id do microchip
     {
         $pet = $this->pet_model->petByMicrochip($id);
 
@@ -36,23 +36,17 @@ class PetController extends Controller
 
     public function store()
     {
-        $pet = $this->getRequestBody(); // Pet retornado do formulario no formato:
-        // [
-        //  nome => 'penina',
-        //  tipo => 'cachorro',
-        //  ...
-        //  cliente_cpf => '00000000000'
-        // ]
+        $pet = $this->getRequestBody();
 
         $cliente_existe = $this->cliente_model->findBy('cpf', $pet['cliente_cpf']); // findBy (função do framework que procura um registro no banco na tabela da model selecionada (cliente) onde a coluna do primeiro parâmetro que tenha o valor do segundo parâmetro) 
 
-        if (!$cliente_existe) { // Caso o cliente com o CPF informado não exista:
-            return $this->response(404, ['error' => 'Não foi possível encontrar um cliente com o CPF informado']);
+        if (!$cliente_existe) {
+            return $this->response(404, ['error' => 'Não foi possível encontrar um tutor com o CPF informado']);
         }
 
         $this->pet_model->save($pet); // Salva o pet no banco
 
-        return $this->response(201, ['sucess' => 'Novo pet criado!']); // Mensagem de sucesso :)
+        return $this->response(201, ['sucess' => 'Novo pet criado!']); 
     }
 
     public function update($id)

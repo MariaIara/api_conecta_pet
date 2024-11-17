@@ -38,4 +38,22 @@ class Pet extends Model
 
         return $this->query($sql, ['microchip' => $microchip]);
     }
+
+    public function petByCPFcliente($idcliente)
+    {
+        $sql = "
+            SELECT 
+                pet.microchip 
+            FROM 
+                pet
+            INNER JOIN 
+                cliente 
+            ON 
+                cliente.cpf = pet.cliente_cpf
+            WHERE 
+                cliente.id = :idcliente";
+    
+        return $this->query($sql, ['idcliente' => $idcliente]);
+    }
+    
 }

@@ -21,4 +21,4 @@ Router::get('/pets', 'PetController::index');
 Router::get('/pets/{id}', 'PetController::show');
 Router::post('/pets', 'PetController::store');
 Router::put('/pets/{id}', 'PetController::update');
-Router::delete('/pets/{id}', 'PetController::delete');
+Router::delete('/pets/{id}', 'PetController::destroy');
