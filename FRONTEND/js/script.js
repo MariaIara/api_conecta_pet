@@ -36,28 +36,24 @@ setInterval(showNextImage, 3000)
 
 //animation AOS
 AOS.init({
-  duration: 800,
+  duration: 700,
   once: true,
 })
 
 //mensagem whatsapp
 function sendToWhatsApp() {
-  var name = document.getElementById('name').value
-  var email = document.getElementById('email').value
-  var message = document.getElementById('message').value
-
-  var phoneNumber = '5588998378542'
-
-  var text = `Olá, meu nome é ${name}, meu e-mail é ${email}. ${message}`
-
-  var whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+  let name = document.getElementById('name').value
+  let email = document.getElementById('email').value
+  let message = document.getElementById('message').value
+  let phoneNumber = '5588998378542'
+  let text = `Olá, meu nome é ${name}, meu e-mail é ${email}. ${message}`
+  let whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
     text
   )}`
 
   document.getElementById('name').value = ''
   document.getElementById('email').value = ''
   document.getElementById('message').value = ''
-
   window.open(whatsappURL, '_blank')
 
   return false
