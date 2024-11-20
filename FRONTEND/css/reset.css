@@ -20,6 +20,9 @@
     --gray-500: #6e6969;
     --gray-700: #333;
 
+    --red: #e63946;
+    --red-hover: #d62839;
+
     --background: #F0F0F0;
     --hover-table: #f9f9f9;
 
@@ -43,6 +46,7 @@ img {
 
 button {
     cursor: pointer;
+    border-radius: 0.8rem;
 }
 
 h1 {

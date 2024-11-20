@@ -7,12 +7,13 @@ body {
 }
 
 .form-wrapper>h1 {
-    font-size: 3.5rem;
+    font-size: 3.3rem;
     color: var(--gray-500);
     line-height: 2.5rem;
 }
 
 .form-wrapper>p {
+    font-size: 1.6rem;
     color: var(--gray-500);
     margin: 0.5rem 0;
 }
@@ -26,8 +27,7 @@ body {
     background-color: var(--gray-300);
     height: auto;
     max-width: 70rem;
-    padding: 4.5rem 2rem;
-    border-radius: 0.8rem;
+    padding: 3rem 2rem;
 }
 
 form {
@@ -42,7 +42,6 @@ form {
     width: 35rem;
     padding: 1.0rem;
     background-color: var(--white);
-    border-radius: 0.8rem;
 }
 
 .input-group input {
@@ -60,11 +59,33 @@ form {
     margin-right: 1rem;
 }
 
+.checkbox {
+    margin-bottom: 0.9rem;
+    margin-top: -1rem;
+}
+
+.forgot-password a {
+    font-size: 1.5rem;
+    color: var(--gray-500);
+    text-decoration: none;
+}
+
+.forgot-password a span {
+    color: var(--purple-500);
+    font-weight: 500;
+}
+
 .form-wrapper button {
     width: 35rem;
 }
 
 @media (max-width: 515px) {
+    .align-left {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        text-align: left;
+    }
 
     .form-wrapper>h1 {
         font-size: 2.8rem;
@@ -76,17 +97,12 @@ form {
 
     .form-wrapper {
         text-align: center;
-        max-width: 35rem;
-        padding: 3rem;
+        max-width: 34rem;
+        padding: 2.5rem;
     }
 
     .input-group {
-        width: 25rem;
-    }
-
-    form {
-        align-items: center;
-        justify-content: center;
+        width: 28rem;
     }
 
     .input-group input {
@@ -94,6 +110,6 @@ form {
     }
 
     .form-wrapper button {
-        width: 25rem;
+        width: 28rem;
     }
 }

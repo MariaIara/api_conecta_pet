@@ -344,6 +344,7 @@ header {
 .image img {
     width: 400px;
     height: 400px;
+    border-radius: 0.8rem;
 }
 
 .card .text {
@@ -366,7 +367,7 @@ header {
 
 .content {
     padding: 2rem;
-    border-radius: 8px;
+    border-radius: 0.8rem;
     max-width: 500px;
     text-align: left;
 }
@@ -399,7 +400,7 @@ textarea {
     width: 100%;
     padding: 0.8rem;
     border: 1px solid var(--white);
-    border-radius: 5px;
+    border-radius: 0.5rem;
     font-size: 1.7rem;
     font-weight: 300;
     background: transparent;

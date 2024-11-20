@@ -13,7 +13,6 @@ body {
     gap: 2rem;
     padding: 3rem 2rem;
     width: 35rem;
-    border-radius: 0.8rem;
     background-color: var(--gray-300);
 }
 

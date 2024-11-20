@@ -107,7 +107,7 @@ div.container {
     color: var(--blue-900);
 }
 
-/* .container .form-side .login-box .forgot-password {
+.container .form-side .login-box .forgot-password {
     text-align: left;
     margin-bottom: 1rem;
 }
@@ -121,12 +121,12 @@ div.container {
 .container .form-side .login-box .forgot-password a span {
     color: var(--purple-500);
     font-weight: 500;
-} */
+}
 
 .container .form-side .login-box .checkbox {
     display: flex;
     align-items: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .container .form-side .login-box .checkbox input {
@@ -134,7 +134,7 @@ div.container {
 }
 
 .container .form-side .login-box .checkbox label {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     color: var(--gray-500);
 }
 
