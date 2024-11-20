@@ -131,20 +131,6 @@ header {
     animation: float 2.5s ease-in-out infinite;
 }
 
-@keyframes float {
-    0% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-10px);
-    }
-
-    100% {
-        transform: translateY(0);
-    }
-}
-
 /*section about us*/
 .about-us.container {
     display: flex;
