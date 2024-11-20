@@ -7,10 +7,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sora:wght@100..800&display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sora:wght@100..800&display=swap"
+        rel="stylesheet" />
     <link rel="stylesheet" href="../css/login.css" />
     <link rel="stylesheet" href="../css/reset.css" />
-    <title>Login - PetSocial</title>
+    <title>Login - Pet Social ONG patinhas de Rua</title>
 </head>
 
 <body>
@@ -24,7 +26,7 @@
                 <h2>Bem-Vindo!</h2>
                 <p>Faça login para acessar sua conta.</p>
 
-                <form  id="loginForm">
+                <form id="loginForm">
                     <div class="input-box">
                         <label for="email">Digite seu email</label>
                         <div class="input-container">
@@ -41,19 +43,19 @@
                         </div>
                     </div>
 
-                    <!-- <div class="forgot-password">
+                    <div class="checkbox">
+                        <input type="checkbox" id="show-password" onclick="togglePassword()">
+                        <label for="show-password">Mostrar senha</label>
+                    </div>  
+
+                    <div class="forgot-password">
                         <a href="#">Esqueceu a senha? <span>Recupere</span></a>
-                    </div> -->
+                    </div>
 
                     <!-- <div class="checkbox">
                         <input type="checkbox" id="admin-master">
                         <label for="admin-master">Entrar como Administrador Master</label>
                     </div> -->
-
-                    <div class="checkbox">
-                        <input type="checkbox" id="show-password" onclick="togglePassword()">
-                        <label for="show-password">Mostrar senha</label>
-                    </div>
 
                     <button type="button" class="btn-primary" onclick="login()">Entrar</button>
                 </form>
@@ -62,7 +64,7 @@
     </div>
 
     <script src="../js/login.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </body>
 
