@@ -156,6 +156,79 @@ td:last-child {
     font-size: 1.8rem;
 }
 
+.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+}
+
+.modal.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal-content {
+    background: var(--white);
+    padding: 3rem 2rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    max-width: 400px;
+    width: 90%;
+}
+
+.modal h2 {
+    font-size: 2.5rem;
+    color: var(--blue-900);
+}
+
+.modal p {
+    font-size: 1.6rem;
+    margin: 2rem 0 3.4rem 0;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn-danger {
+    background: var(--red);
+    color: var(--white);
+    padding: 0.7rem 1.5rem;
+    transition: 0.3s ease;
+}
+
+.btn-danger:hover {
+    background: var(--red-hover);
+}
+
+.btn-secondary {
+    background: var(--gray-300);
+    color: var(--blue-900);
+    padding: 0.7rem 1.5rem;
+    transition: 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: var(--gray-500);
+    color: var(--white);
+}
+
 @media (max-width: 700px) {
     .search-container h2 {
         font-size: 1.5rem;
@@ -180,11 +253,9 @@ td:last-child {
         padding: 0.5rem;
     }
 
-    /* Ajustes para o input de busca */
     #search-input {
         display: none;
         width: 100%;
-        /* Exibe largura total em telas menores */
     }
 
     .btn-search {
@@ -194,7 +265,6 @@ td:last-child {
     .ph-magnifying-glass {
         background-color: var(--purple-300);
         border: none;
-        border-radius: 0.8rem;
         width: 4.5rem;
         height: 4.5rem;
         display: flex;
