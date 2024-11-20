@@ -24,7 +24,7 @@
                 <a href="./create_adm.html" class="btn-header">
                     <i class="ph ph-users-three"></i>
                 </a>
-                <button class="btn-header">
+                <button class="btn-header btn-logout">
                     <i class="ph ph-sign-out"></i>
                 </button>
             </div>
@@ -54,6 +54,18 @@
 
         <div id="table-container"></div>
     </div>
+
+    <div id="logoutModal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Deseja realmente sair?</h2>
+            <p>Você será desconectado da plataforma.</p>
+            <div class="modal-buttons">
+                <button id="confirmLogout" class="btn-danger">Sair</button>
+                <button id="cancelLogout" class="btn-secondary">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
 
     <script src="../js/administrative_panel.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
