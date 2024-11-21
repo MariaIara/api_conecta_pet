@@ -12,8 +12,9 @@ div.box-result {
     flex-direction: column;
     gap: 2rem;
     width: 30rem;
-    padding: 3rem 2rem;
+    padding: 3rem 2.5rem;
     background-color: var(--gray-300);
+    border-radius: 0.8rem;
 }
 
 .box-result h3 {
