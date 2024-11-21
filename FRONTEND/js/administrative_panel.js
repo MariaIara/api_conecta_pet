@@ -1,49 +1,3 @@
-async function buscarPets() {
-  try {
-    const response = await fetch('http://localhost:8080/pets')
-    if (!response.ok) {
-      throw new Error(`Erro ao buscar dados: ${response.statusText}`)
-    }
-
-    const data = await response.json()
-    console.log('Dados recebidos da API:', data)
-
-    const headers = [
-      'ID', 
-      'Nome',
-      'Sexo',
-      'Microchip',
-      'Raça',
-      'Animal',
-      'Responsável',
-      'Ações',
-    ]
-
-    const rows = data.map((pet) => {
-      const animalString =
-        pet.animal === 0 || pet.animal === '0' ? 'Cachorro' : 'Gato'
-
-      const petId = pet.ID || pet.id || '—' 
-
-      console.log(`ID processado: ${petId}`)
-
-      return [
-        petId, 
-        pet.nome,
-        pet.sexo,
-        pet.microchip,
-        pet.raca,
-        animalString,
-        formatCPF(pet.cliente_cpf), 
-      ]
-    })
-
-    createTable(headers, rows)
-  } catch (error) {
-    console.error('Erro ao buscar dados:', error)
-  }
-}
-
 function verificarNivelAcesso() {
   const token = localStorage.getItem('token')
 
@@ -77,6 +31,56 @@ function verificarNivelAcesso() {
   }
 }
 
+async function buscarPets() {
+  try {
+    const response = await fetch('http://localhost:8080/pets')
+    if (!response.ok) {
+      throw new Error(`Erro ao buscar dados: ${response.statusText}`)
+    }
+
+    const data = await response.json()
+    console.log('Dados recebidos da API:', data)
+
+    const headers = [
+      'ID',
+      'Nome',
+      'Sexo',
+      'Microchip',
+      'Raça',
+      'Animal',
+      'Responsável',
+      'Ações',
+    ]
+
+    const rows = data.map((pet) => {
+      const animalString =
+        pet.animal === 0 || pet.animal === '0' ? 'Cachorro' : 'Gato'
+
+      const petId = pet.ID || pet.id || '—'
+
+      console.log(`ID processado: ${petId}`)
+
+      return [
+        petId,
+        pet.nome,
+        pet.sexo,
+        pet.microchip,
+        pet.raca,
+        animalString,
+        formatCPF(pet.cliente_cpf),
+      ]
+    })
+
+    createTable(headers, rows)
+  } catch (error) {
+    console.error('Erro ao buscar dados:', error)
+  }
+}
+
+function formatCPF(cpf) {
+  return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4')
+}
+
 function createTable(headers, rows) {
   const tableContainer = document.getElementById('table-container')
   tableContainer.innerHTML = ''
@@ -96,7 +100,6 @@ function createTable(headers, rows) {
     const row = document.createElement('tr')
     rowData.forEach((cellData, index) => {
       const td = document.createElement('td')
-
       td.textContent = cellData !== undefined ? cellData : '—'
       row.appendChild(td)
 
@@ -106,24 +109,43 @@ function createTable(headers, rows) {
     })
 
     const actionTd = document.createElement('td')
-    actionTd.innerHTML = `
-      <button class="action-btn delete-btn" data-id="${rowData[0]}">
-        <i class="ph-fill ph-trash"></i>
-      </button>
-      <button class="action-btn edit-btn" data-id="${rowData[0]}">
-        <i class="ph-fill ph-pencil-simple"></i>
-      </button>
-    `
+
+    const token = localStorage.getItem('token')
+    let nivelUsuario = '1'
+    if (token) {
+      try {
+        const decodedToken = jwt_decode(token)
+        nivelUsuario = decodedToken.data.nivel
+      } catch (error) {
+        console.error('Erro ao decodificar o token:', error)
+      }
+    }
+
+    if (nivelUsuario === '2') {
+      actionTd.innerHTML = `
+        <button class="action-btn delete-btn" data-id="${rowData[0]}">
+          <i class="ph-fill ph-trash"></i>
+        </button>
+        <button class="action-btn edit-btn" data-id="${rowData[0]}">
+          <i class="ph-fill ph-pencil-simple"></i>
+        </button>
+      `
+    } else {
+      actionTd.textContent = 'Sem permissões'
+    }
+
     row.appendChild(actionTd)
     tbody.appendChild(row)
 
     const deleteButton = actionTd.querySelector('.delete-btn')
-    deleteButton.addEventListener('click', (event) => {
-      const button = event.target.closest('.delete-btn')
-      const id = button.getAttribute('data-id')
-      console.log(`ID capturado pelo evento: ${id}`)
-      deletarPet(id, row)
-    })
+    if (deleteButton) {
+      deleteButton.addEventListener('click', (event) => {
+        const button = event.target.closest('.delete-btn')
+        const id = button.getAttribute('data-id')
+        console.log(`ID capturado pelo evento: ${id}`)
+        deletarPet(id, row)
+      })
+    }
   })
 
   table.appendChild(thead)
