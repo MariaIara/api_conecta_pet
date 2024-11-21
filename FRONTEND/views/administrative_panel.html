@@ -10,11 +10,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sora:wght@100..800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../css/administrative_panel.css" />
     <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <title>Painel Administrativo - Pet Social ONG Patinha de Ruas</title>
 </head>
 
 <body>
-    <div>
+    <div data-aos="fade-down">
         <header class="header container">
             <div class="header-logo">
                 <a href="../index.html" target="_blank"><img src="../assets/logo.png" alt="Logo da ONG"></a>
@@ -31,7 +33,7 @@
         </header>
     </div>
 
-    <div class="table-wrapper container">
+    <div class="table-wrapper container" data-aos="fade-up">
         <div class="search-container">
             <h2>Animais registrados</h2>
 
@@ -68,6 +70,7 @@
 
 
     <script src="../js/administrative_panel.js"></script>
+    <script src="../js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </body>
