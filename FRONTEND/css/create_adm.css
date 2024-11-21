@@ -28,6 +28,7 @@ body {
     height: auto;
     max-width: 70rem;
     padding: 3rem 2rem;
+    border-radius: 0.8rem;
 }
 
 form {
@@ -42,6 +43,7 @@ form {
     width: 35rem;
     padding: 1.0rem;
     background-color: var(--white);
+    border-radius: 0.8rem;
 }
 
 .input-group input {
