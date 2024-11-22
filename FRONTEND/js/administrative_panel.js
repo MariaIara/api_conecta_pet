@@ -102,10 +102,6 @@ function createTable(headers, rows) {
       const td = document.createElement('td')
       td.textContent = cellData !== undefined ? cellData : '—'
       row.appendChild(td)
-
-      if (index === 0) {
-        console.log(`Exibindo ID na tabela: ${cellData}`)
-      }
     })
 
     const actionTd = document.createElement('td')
@@ -142,8 +138,16 @@ function createTable(headers, rows) {
       deleteButton.addEventListener('click', (event) => {
         const button = event.target.closest('.delete-btn')
         const id = button.getAttribute('data-id')
-        console.log(`ID capturado pelo evento: ${id}`)
         deletarPet(id, row)
+      })
+    }
+
+    const editButton = actionTd.querySelector('.edit-btn')
+    if (editButton) {
+      editButton.addEventListener('click', (event) => {
+        const button = event.target.closest('.edit-btn')
+        const id = button.getAttribute('data-id')
+        abrirModalEdicao(id, rowData)
       })
     }
   })
@@ -154,8 +158,6 @@ function createTable(headers, rows) {
 }
 
 async function deletarPet(id, rowElement) {
-  console.log(`ID recebido em deletarPet: ${id}`)
-
   const confirmacao = confirm('Tem certeza de que deseja deletar este pet?')
   if (!confirmacao) return
 
@@ -175,6 +177,89 @@ async function deletarPet(id, rowElement) {
     console.error('Erro ao deletar o pet:', error.message)
     alert('Não foi possível deletar o pet. Tente novamente.')
   }
+}
+
+function abrirModalEdicao(id, rowData) {
+  const modal = document.createElement('div')
+  modal.classList.add('modalEdit')
+  modal.innerHTML = `
+    <div class="modal-content">
+      <h2>Editar dados do animal</h2>
+      <form id="edit-form">
+        <label>Nome: <input type="text" id="edit-nome" value="${
+          rowData[1]
+        }" /></label>
+        <label>Sexo: 
+          <select id="edit-sexo">
+            <option value="M" ${
+              rowData[2] === 'M' ? 'selected' : ''
+            }>Macho</option>
+            <option value="F" ${
+              rowData[2] === 'F' ? 'selected' : ''
+            }>Fêmea</option>
+          </select>
+        </label>
+        <label>Microchip: <input type="text" id="edit-microchip" value="${
+          rowData[3]
+        }" /></label>
+        <label>Raça: <input type="text" id="edit-raca" value="${
+          rowData[4]
+        }" /></label>
+        <label>Animal: 
+          <select id="edit-animal">
+            <option value="0" ${
+              rowData[5] === 'Cachorro' ? 'selected' : ''
+            }>Cachorro</option>
+            <option value="1" ${
+              rowData[5] === 'Gato' ? 'selected' : ''
+            }>Gato</option>
+          </select>
+        </label>
+        <div class="group-button">
+          <button type="submit" class="btn-primary">Salvar</button>
+          <button type="button" class="btn-secondary" id="cancel-edit">Cancelar</button>
+        </div>
+      </form>
+    </div>
+  `
+  document.body.appendChild(modal)
+
+  const editForm = document.getElementById('edit-form')
+  editForm.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    const updatedData = {
+      nome: document.getElementById('edit-nome').value,
+      sexo: document.getElementById('edit-sexo').value,
+      microchip: document.getElementById('edit-microchip').value,
+      raca: document.getElementById('edit-raca').value,
+      animal: document.getElementById('edit-animal').value,
+    }
+
+    try {
+      const response = await fetch(`http://localhost:8080/pets/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedData),
+      })
+
+      if (!response.ok) {
+        throw new Error('Erro ao atualizar pet')
+      }
+
+      alert('Pet atualizado com sucesso!')
+      modal.remove()
+      buscarPets() 
+    } catch (error) {
+      console.error('Erro ao atualizar o pet:', error.message)
+      alert('Não foi possível atualizar o pet. Tente novamente.')
+    }
+  })
+
+  document.getElementById('cancel-edit').addEventListener('click', () => {
+    modal.remove()
+  })
 }
 
 document.addEventListener('DOMContentLoaded', () => {
