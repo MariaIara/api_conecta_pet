@@ -64,7 +64,6 @@ body {
     width: 34rem;
 }
 
-/* Estilos para telas menores */
 @media (max-width: 768px) {
     .form {
         padding: 2rem;
