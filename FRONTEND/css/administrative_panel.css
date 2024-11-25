@@ -81,14 +81,14 @@ body>div {
     color: var(--gray-500);
 }
 
-.search-icon-container {
+/* .search-icon-container {
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-}
+} */
 
-#search-input {
+/* #search-input {
     display: inline-block;
     width: 70%;
     padding: 1rem;
@@ -97,7 +97,7 @@ body>div {
     font-size: 1.4rem;
     color: var(--gray-500);
     margin: 0 1.5rem;
-}
+} */
 
 .hidden {
     display: none;
