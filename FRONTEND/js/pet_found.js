@@ -1,54 +1,3 @@
-// document.addEventListener('DOMContentLoaded', async () => {
-//   const microchip = localStorage.getItem('microchip')
-
-//   if (microchip) {
-//     try {
-//       const response = await fetch(`http://localhost:8080/pets/${microchip}`)
-
-//       if (response.ok) {
-//         const pet = await response.json()
-
-//         if (pet && pet.length > 0) {
-//           const petData = pet[0]
-
-//           document.getElementById('resultId').innerText =
-//             petData.ID || 'Não disponível'
-//           document.getElementById('resultNome').innerText =
-//             petData.nome || 'Não disponível'
-//           document.getElementById('resultSexo').innerText =
-//             petData.sexo || 'Não disponível'
-//           document.getElementById('resultAnimal').innerText =
-//             petData.animal === 0 ? 'Cachorro' : 'Gato'
-//           document.getElementById('resultMicrochip').innerText =
-//             petData.microchip || 'Não disponível'
-//           document.getElementById('resultResponsavel').innerText =
-//             petData.cliente_cpf || 'Não disponível'
-//         } else {
-//           document.getElementById('petNotFoundModal').style.display = 'flex'
-//         }
-//       } else {
-//         const errorData = await response.json()
-//         console.error(errorData.error || 'Erro ao buscar pet.')
-//         document.getElementById('petNotFoundModal').style.display = 'flex'
-//       }
-//     } catch (error) {
-//       console.error('Erro ao buscar animal:', error)
-//       document.getElementById('petNotFoundModal').style.display = 'flex'
-//     }
-//   } else {
-//     alert('Nenhum microchip foi fornecido.')
-//     window.location.href = './find_pet.html'
-//   }
-
-//   document.getElementById('searchAnotherChip').addEventListener('click', () => {
-//     window.location.href = './find_pet.html'
-//   })
-
-//   document.getElementById('closeModal').addEventListener('click', () => {
-//     window.location.href = '../index.html'
-//   })
-// })
-
 document.addEventListener('DOMContentLoaded', async () => {
   const microchip = localStorage.getItem('microchip')
   const redirectionFlag = localStorage.getItem('redirection_flag')
@@ -67,7 +16,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (pet && pet.length > 0) {
           const petData = pet[0]
 
-          // Preenche os dados do pet
           document.getElementById('resultId').innerText =
             petData.ID || 'Não disponível'
           document.getElementById('resultNome').innerText =
@@ -81,7 +29,6 @@ document.addEventListener('DOMContentLoaded', async () => {
           document.getElementById('resultResponsavel').innerText =
             petData.cliente_cpf || 'Não disponível'
 
-          // Limpa as flags após sucesso
           localStorage.removeItem('redirection_flag')
         } else {
           console.log(

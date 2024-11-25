@@ -5,8 +5,8 @@ document
 
     const data = {
       nome: document.getElementById('nomeTutor').value,
-      cpf: document.getElementById('cpfTutor').value.replace(/\D/g, ''), // Remove formatação do CPF
-      cep: document.getElementById('cepTutor').value.replace(/\D/g, ''), // Remove formatação do CEP
+      cpf: document.getElementById('cpfTutor').value.replace(/\D/g, ''),
+      cep: document.getElementById('cepTutor').value.replace(/\D/g, ''), 
       cidade: document.getElementById('cidadeTutor').value,
       UF: document.getElementById('UFTutor').value,
       bairro: document.getElementById('bairroTutor').value,

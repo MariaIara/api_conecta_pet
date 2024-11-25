@@ -18,10 +18,18 @@ async function login() {
 
     const data = await response.json()
     if (response.ok) {
-      localStorage.setItem('token', data.token)
+      localStorage.setItem('token', data.token) 
+      const decodedToken = jwt_decode(data.token)
+
+      console.log('Token decodificado:', decodedToken)
+
+      if (!decodedToken.data || !decodedToken.data.nivel) {
+        alert('Erro ao identificar o nível de usuário.')
+        return
+      }
 
       alert('Login realizado com sucesso!')
-      window.location.href = './administrative_panel.html' 
+      window.location.href = './administrative_panel.html'
     } else {
       alert(data.error || 'Erro ao fazer login')
     }
