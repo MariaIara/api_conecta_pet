@@ -10,3 +10,8 @@ document
       alert('Por favor, insira um número de microchip válido.')
     }
   })
+
+  document.addEventListener('DOMContentLoaded', () => {
+    console.log('Página find_pet.html carregada.')
+    localStorage.removeItem('redirection_flag')
+  })
