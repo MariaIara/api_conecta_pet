@@ -11,7 +11,7 @@ document
       return
     }
 
-    let nivelUsuario = '1'
+    let nivelUsuario = 1
     try {
       const decodedToken = jwt_decode(token)
       nivelUsuario = decodedToken.data.nivel

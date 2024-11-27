@@ -11,7 +11,7 @@ function verificarNivelAcesso() {
     const decodedToken = jwt_decode(token)
     const tipo = decodedToken.data.nivel
 
-    if (tipo === '1') {
+    if (tipo === 1 || tipo === '1') {
       document.querySelector('a[href="./create_adm.html"]').style.display =
         'none'
       document.querySelector('a[href="./tutor_registre.html"]').style.display =
@@ -117,7 +117,7 @@ function createTable(headers, rows) {
       }
     }
 
-    if (nivelUsuario === '2') {
+    if (nivelUsuario === 2 || nivelUsuario === '2') {
       actionTd.innerHTML = `
         <button class="action-btn delete-btn" data-id="${rowData[0]}">
           <i class="ph-fill ph-trash"></i>
@@ -250,7 +250,7 @@ function abrirModalEdicao(id, rowData) {
 
       alert('Pet atualizado com sucesso!')
       modal.remove()
-      buscarPets() 
+      buscarPets()
     } catch (error) {
       console.error('Erro ao atualizar o pet:', error.message)
       alert('Não foi possível atualizar o pet. Tente novamente.')
