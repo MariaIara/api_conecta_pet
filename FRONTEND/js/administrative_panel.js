@@ -271,15 +271,6 @@ function formatCPF(cpf) {
   return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4')
 }
 
-// document.getElementById('search-icon').addEventListener('click', function () {
-//   const searchInput = document.getElementById('search-input')
-//   const isVisible = searchInput.style.display === 'block'
-//   searchInput.style.display = isVisible ? 'none' : 'block'
-//   if (searchInput.style.display === 'block') {
-//     searchInput.focus()
-//   }
-// })
-
 const logoutBtn = document.querySelector('.ph-sign-out')
 const logoutModal = document.getElementById('logoutModal')
 const confirmLogout = document.getElementById('confirmLogout')
