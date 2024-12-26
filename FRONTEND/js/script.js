@@ -45,7 +45,7 @@ function sendToWhatsApp() {
   let name = document.getElementById('name').value
   let email = document.getElementById('email').value
   let message = document.getElementById('message').value
-  let phoneNumber = '5588998378542'
+  let phoneNumber = '5581996764319'
   let text = `Olá, meu nome é ${name}, meu e-mail é ${email}. ${message}`
   let whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
     text
